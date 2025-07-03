@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <link rel="icon" type="image/png" href="./images/logo2.webp">
+  <link rel="icon" type="image/png" href="./images/logo2.webp">
   <title>Bad Bug Market</title>
   <style>
     * {
@@ -15,20 +15,20 @@
     body {
       font-family: sans-serif;
       color: white;
-      background: url('./images/logo.webp')  center center fixed;
+      background: url('./images/logo.webp') center center fixed;
       background-size: cover;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
     }
-            .container{
-             height: 100vh;
-             display: flex;
-             justify-content: center;
-      align-items: center;
-            }
 
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     .avatar {
       width: 80px;
@@ -80,16 +80,47 @@
       font-size: 24px;
       text-decoration: none;
     }
+
+    /* LOADER */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #loader span {
+      color: #fff;
+      font-size: 1.5em;
+    }
   </style>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="container">
-    
-<div>
-  <a href="https://www.instagram.com/badbugmarket/"><button class="button">instagram</button></a>
-    <a href="https://www.vinted.it/member/58775911"><button class="button">vinted</button></a>
-</div>
+  <div id="loader">
+    <span>Caricamento...</span>
   </div>
+
+  <div class="container">
+    <div>
+      <a href="https://www.instagram.com/badbugmarket/"><button class="button">instagram</button></a>
+      <a href="https://www.vinted.it/member/58775911"><button class="button">vinted</button></a>
+    </div>
+  </div>
+
+  <script>
+    // Precarica l'immagine di background
+    const bgImg = new Image();
+    bgImg.src = './images/logo.webp';
+    bgImg.onload = function() {
+      document.getElementById('loader').style.display = 'none';
+    };
+  </script>
 </body>
 </html>
