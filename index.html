@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bad Bug Market</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: sans-serif;
+      color: white;
+      background: url('./images/DSC06408.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 20px;
+      width: 320px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+      margin-top: -40px;
+    }
+
+    h1 {
+      font-size: 1.2em;
+      color: #ff4d6d;
+      margin: 10px 0 5px;
+    }
+
+    p {
+      font-size: 0.9em;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      background: #f76c5e;
+      border: none;
+      border-radius: 10px;
+      padding: 12px;
+      margin: 8px 0;
+      width: 100%;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background: #ff4d6d;
+    }
+
+    .icons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .icons a {
+      color: white;
+      font-size: 24px;
+      text-decoration: none;
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <img class="avatar" src="https://i.ibb.co/9qt3cDy/avatar.jpg" alt="Aki Mata">
+    <h1>Bad Bug Market</h1>
+    <p>Vintage Supply</p>
+
+    <button class="button" >Feed the Nostalgia</button>
+    <a href="https://www.instagram.com/badbugmarket/"><button class="button">Instagram</button></a>
+    <button class="button">Vinted</button>
+
+    <div class="icons">
+      <a href="#"><i class="fab fa-spotify"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitch"></i></a>
+    </div>
+  </div>
+</body>
+</html>
