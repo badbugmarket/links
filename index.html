@@ -207,10 +207,18 @@
     }, { passive: false });
 
       // Aggiunge e rimuove la classe jump al click/tap
-  document.querySelectorAll('.badbug-btn').forEach(btn => {
+document.querySelectorAll('.badbug-btn').forEach(btn => {
     btn.addEventListener('click', e => {
+      e.preventDefault(); // Blocca il link per ora
+
       btn.classList.add('jump');
-      setTimeout(() => btn.classList.remove('jump'), 300);
+
+      const link = btn.closest('a').href; 
+
+      setTimeout(() => {
+        btn.classList.remove('jump');
+        window.location.href = link; // Ora vai al link
+      }, 500); // Match con durata animazione
     });
   });
   </script>
