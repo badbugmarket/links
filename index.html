@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="./images/logo2.webp">
+  <link rel="icon" type="image/png" href="./images/logo2.webp" />
   <title>Bad Bug Market</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -13,76 +14,16 @@
     }
 
     body {
-      font-family: sans-serif;
+      font-family: 'Orbitron', sans-serif;
       color: white;
       background: url('./images/logo.webp') center center fixed;
       background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       min-height: 100vh;
-      overflow: hidden;
-    }
-
-    .container {
-      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid white;
-      margin-top: -40px;
-    }
-
-    h1 {
-      font-size: 1.2em;
-      color: #ff4d6d;
-      margin: 10px 0 5px;
-    }
-
-    p {
-      font-size: 0.9em;
-      margin-bottom: 20px;
-    }
-
-    .button {
-      background: #e509c0;
-      border: none;
-      border-radius: 10px;
-      padding: 12px;
-      margin: 8px 0;
-      width: 100%;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-      text-transform: capitalize;
-    }
-
-    .button:hover {
-      background: #1b1b1b;
-    }
-
-    .icons {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .icons a {
-      color: white;
-      font-size: 24px;
-      text-decoration: none;
-    }
-
-    /* LOADER */
     #loader {
       position: fixed;
       top: 0;
@@ -100,20 +41,103 @@
       color: #fff;
       font-size: 1.5em;
     }
+
+    .button-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .badbug-btn {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 50px;
+      min-width: 300px;
+      min-height: 70px;
+      background: linear-gradient(135deg, #0f0 30%, #f0f 70%);
+      color: #eee;
+      font-weight: 700;
+      border: 2px solid #f0f;
+      border-radius: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #f0f, inset 0 0 10px #0f0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .badbug-btn:hover {
+      box-shadow: 0 0 40px #f0f, inset 0 0 20px #0f0;
+      transform: scale(1.1) rotate(1deg);
+      background: linear-gradient(135deg, #0f0, #f0f);
+    }
+
+    .badbug-btn::before,
+    .badbug-btn::after {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 30px;
+      background: #f0f;
+      top: -30px;
+      border-radius: 2px;
+      box-shadow: 0 0 10px #f0f;
+    }
+
+    .badbug-btn::before {
+      left: 20px;
+      transform: rotate(-25deg);
+    }
+
+    .badbug-btn::after {
+      right: 20px;
+      transform: rotate(25deg);
+    }
+
+    .zampa {
+      position: absolute;
+      width: 30px;
+      height: 3px;
+      background: #0f0;
+      border-radius: 2px;
+      box-shadow: 0 0 10px #0f0;
+    }
+
+    .zampa1 { left: -35px; top: 20px; transform: rotate(-30deg); }
+    .zampa2 { left: -35px; bottom: 20px; transform: rotate(30deg); }
+    .zampa3 { right: -35px; top: 20px; transform: rotate(30deg); }
+    .zampa4 { right: -35px; bottom: 20px; transform: rotate(-30deg); }
+
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
   <div id="loader">
     <span>Caricamento...</span>
   </div>
 
-  <div class="container">
-    <div>
-      <a href="https://www.instagram.com/badbugmarket/"><button class="button">instagram</button></a>
-      <a href="https://www.vinted.it/member/58775911"><button class="button">vinted</button></a>
-    </div>
-  </div>
+  <main class="button-stack">
+    <a href="https://www.instagram.com/badbugmarket/" class="badbug-btn">
+      INSTAGRAM
+      <span class="zampa zampa1"></span>
+      <span class="zampa zampa2"></span>
+      <span class="zampa zampa3"></span>
+      <span class="zampa zampa4"></span>
+    </a>
+
+    <a href="https://www.vinted.it/member/58775911" class="badbug-btn">
+      VINTED
+      <span class="zampa zampa1"></span>
+      <span class="zampa zampa2"></span>
+      <span class="zampa zampa3"></span>
+      <span class="zampa zampa4"></span>
+    </a>
+  </main>
 
   <script>
     // Precarica l'immagine di background
@@ -123,5 +147,6 @@
       document.getElementById('loader').style.display = 'none';
     };
   </script>
+
 </body>
 </html>
