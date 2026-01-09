@@ -16,7 +16,7 @@
     html, body {
       font-family: 'Orbitron', sans-serif;
       color: white;
-      background: url('./images/logo2_desktop_bg.jpg') center center no-repeat;
+      background: url('./images/logonuovo.webp') center center no-repeat;
       background-size: cover;
       width: 100%;
       height: 100%;
@@ -57,7 +57,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #0f0 30%, #f0f 70%);
+      background: linear-gradient(135deg, rgb(17, 218, 17) 30%, #f0f 70%);
       opacity: 0.8;
       animation-name: fall;
       animation-timing-function: linear;
@@ -98,14 +98,14 @@
       padding: 15px 30px;
       min-width: 220px;
       min-height: 60px;
-      background: linear-gradient(135deg, #0f0 30%, #f0f 70%);
-      color: #4e0074;
+      background: linear-gradient(135deg, rgb(39, 100, 39) 30%, #4e0074 70%);
+      color: rgb(201, 201, 201);
       font-weight: 700;
-      border: 2px solid #f0f;
+      border: 2px solid #4e0074;
       border-radius: 20px;
       font-size: 20px;
       cursor: pointer;
-      box-shadow: 0 0 20px #f0f, inset 0 0 10px #0f0;
+      box-shadow: 0 0 20px #4e0074, inset 0 0 10px rgb(39, 100, 39);
       text-transform: uppercase;
       letter-spacing: 2px;
       text-decoration: none;
@@ -113,9 +113,10 @@
     }
 
     .badbug-btn:hover {
-      box-shadow: 0 0 40px #f0f, inset 0 0 20px #0f0;
+      box-shadow: 0 0 40px #4e0074, inset 0 0 20px rgb(39, 100, 39);
       transform: scale(1.05) rotate(1deg);
-      background: linear-gradient(135deg, #0f0, #f0f);
+      background: linear-gradient(135deg, rgb(39, 100, 39), #4e0074);
+      color: white;
     }
 
     .badbug-btn::before,
@@ -124,10 +125,10 @@
       position: absolute;
       width: 3px;
       height: 25px;
-      background: #f0f;
+      background: #4e0074;
       top: -25px;
       border-radius: 2px;
-      box-shadow: 0 0 10px #f0f;
+      box-shadow: 0 0 10px #4e0074;
     }
 
     .badbug-btn::before {
@@ -144,9 +145,9 @@
       position: absolute;
       width: 25px;
       height: 3px;
-      background: #0f0;
+      background: rgb(39, 100, 39);
       border-radius: 2px;
-      box-shadow: 0 0 10px #0f0;
+      box-shadow: 0 0 10px rgb(39, 100, 39);
     }
 
     .zampa1 { left: -30px; top: 15px; transform: rotate(-30deg); }
@@ -271,7 +272,7 @@
       // Rimuovi l'elemento dal DOM dopo la transizione
       setTimeout(() => {
         loader.style.display = 'none';
-      }, 2000);
+      },2000);
     }, 3000);
 
     document.body.addEventListener('touchmove', function(e) {

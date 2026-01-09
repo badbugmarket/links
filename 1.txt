@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="./images/logo2.webp" />
+  <title>Bad Bug Market</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      background: url('./images/logo2_desktop_bg.jpg') center center no-repeat;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      overflow: hidden;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 2s ease;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Container per i puntini */
+    #dots-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0f0 30%, #f0f 70%);
+      opacity: 0.8;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px);
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    .button-stack {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      z-index: 2;
+    }
+
+    .badbug-btn {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 30px;
+      min-width: 220px;
+      min-height: 60px;
+      background: linear-gradient(135deg, #0f0 30%, #f0f 70%);
+      color: #4e0074;
+      font-weight: 700;
+      border: 2px solid #f0f;
+      border-radius: 20px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #f0f, inset 0 0 10px #0f0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .badbug-btn:hover {
+      box-shadow: 0 0 40px #f0f, inset 0 0 20px #0f0;
+      transform: scale(1.05) rotate(1deg);
+      background: linear-gradient(135deg, #0f0, #f0f);
+    }
+
+    .badbug-btn::before,
+    .badbug-btn::after {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 25px;
+      background: #f0f;
+      top: -25px;
+      border-radius: 2px;
+      box-shadow: 0 0 10px #f0f;
+    }
+
+    .badbug-btn::before {
+      left: 15px;
+      transform: rotate(-25deg);
+    }
+
+    .badbug-btn::after {
+      right: 15px;
+      transform: rotate(25deg);
+    }
+
+    .zampa {
+      position: absolute;
+      width: 25px;
+      height: 3px;
+      background: #0f0;
+      border-radius: 2px;
+      box-shadow: 0 0 10px #0f0;
+    }
+
+    .zampa1 { left: -30px; top: 15px; transform: rotate(-30deg); }
+    .zampa2 { left: -30px; bottom: 15px; transform: rotate(30deg); }
+    .zampa3 { right: -30px; top: 15px; transform: rotate(30deg); }
+    .zampa4 { right: -30px; bottom: 15px; transform: rotate(-30deg); }
+
+    @media (max-width: 480px) {
+      .badbug-btn {
+        padding: 10px 20px;
+        min-width: 160px;
+        min-height: 50px;
+        font-size: 16px;
+      }
+
+      .badbug-btn::before,
+      .badbug-btn::after {
+        height: 20px;
+        top: -20px;
+      }
+
+      .zampa {
+        width: 20px;
+      }
+
+      .zampa1 { left: -25px; }
+      .zampa2 { left: -25px; }
+      .zampa3 { right: -25px; }
+      .zampa4 { right: -25px; }
+    }
+
+    .bg-overlay {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100vw; 
+      height: 100vh;
+      background: linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.6)
+      );
+      z-index: 1;
+    }
+
+    @keyframes jump {
+      0%, 100% {
+        transform: translateY(0);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translateY(-20px);
+        opacity: 1;
+      }
+    }
+
+    .badbug-btn.jump {
+      animation: jump 0.8s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loader">
+    <div id="dots-container"></div>
+  </div>
+
+  <div class="bg-overlay"></div>
+
+  <main class="button-stack">
+    <a href="https://www.instagram.com/_b.a.d.b.u.g_/" class="badbug-btn">
+      INSTAGRAM
+      <span class="zampa zampa1"></span>
+      <span class="zampa zampa2"></span>
+      <span class="zampa zampa3"></span>
+      <span class="zampa zampa4"></span>
+    </a>
+
+    <a href="https://www.vinted.it/member/264632492" class="badbug-btn">
+       MARKET 1
+      <span class="zampa zampa1"></span>
+      <span class="zampa zampa2"></span>
+      <span class="zampa zampa3"></span>
+      <span class="zampa zampa4"></span>
+    </a>
+
+    <a href="https://www.vinted.it/member/58775911" class="badbug-btn">
+      MARKET 2
+      <span class="zampa zampa1"></span>
+      <span class="zampa zampa2"></span>
+      <span class="zampa zampa3"></span>
+      <span class="zampa zampa4"></span>
+    </a>
+
+  </main>
+
+  <script>
+    const dotsContainer = document.getElementById('dots-container');
+    const numDots = 1000;
+    const vh = window.innerHeight;
+
+    for(let i=0; i < numDots; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      dot.style.left = Math.random() * 100 + 'vw';
+
+      const duration = (Math.random() * 3 + 2).toFixed(2); 
+      dot.style.animationDuration = duration + 's';
+
+      const delay = (Math.random() * 5).toFixed(2); 
+      dot.style.animationDelay = delay + 's';
+
+      dot.style.top = (Math.random() * -vh) + 'px';
+
+      dotsContainer.appendChild(dot);
+    }
+
+    // Dissolvi lentamente il loader in 2 secondi
+    setTimeout(() => {
+      const loader = document.getElementById('loader');
+      loader.classList.add('hidden');
+
+      // Rimuovi l'elemento dal DOM dopo la transizione
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 2000);
+    }, 3000);
+
+    document.body.addEventListener('touchmove', function(e) {
+      e.preventDefault();
+    }, { passive: false });
+
+    document.querySelectorAll('.badbug-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+
+        btn.classList.add('jump');
+
+        const link = btn.closest('a').href; 
+
+        setTimeout(() => {
+          btn.classList.remove('jump');
+          window.location.href = link;
+        }, 500);
+      });
+    });
+  </script>
+
+</body>
+</html>
